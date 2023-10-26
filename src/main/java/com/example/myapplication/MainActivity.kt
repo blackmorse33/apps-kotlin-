@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,12 +18,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-
-
+import androidx.compose.ui.unit.sp
 
 
 data class Review(val text: String, val author: String)
@@ -51,10 +55,37 @@ fun MyJetpackComposeContent() {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        Text(text = "¡DIVERSIÓN CON LA IMPRESIÓN!")
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.Companion.LightGray)
+                .border(2.dp, color = Color.Cyan)
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+        ){
+            Text(
+                text = "¡DIVERSIÓN CON LA IMPRESIÓN 3D!",
+                fontSize = 30.sp
+            )
+        }
+
         MyPromoBanner()
         MyCategoryList(categories)
-        Text(text = "COMENTARIOS")
+
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.Companion.LightGray)
+            .border(2.dp, color = Color.Cyan)
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+        ){
+            Text("COMENTARIOS",
+                fontSize = 20.sp
+            )
+
+        }
+
         MyReviewList(reviews)
 
     }
@@ -96,9 +127,11 @@ fun MyPromoBanner() {
             modifier = Modifier.padding(16.dp)
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_background),
-                contentDescription = null,
+                painter = painterResource(
+                    id = R.drawable.ic_launcher_background),
+                contentDescription = "imagen de prueba",
                 modifier = Modifier.fillMaxWidth()
+
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = "¡Explora nuestra plataforma de impresión 3D hoy mismo!")
